@@ -8,8 +8,13 @@ syntax on
 set autoindent
 
 " tab expansion to 2 spaces, as is good and proper
+set tabstop=2
+set shiftwidth=2
 set expandtab
-set ts=2
+set softtabstop=2
+
+" update wrapping
+set linebreak
 
 call plug#begin('~/.vim/plugged')
 Plug 'mileszs/ack.vim'
@@ -34,7 +39,27 @@ if executable('ag')
 
   " bind K to grep word under cursor
   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+  " update ignore
+  set wildignore+=*/coverage/*,*.swp,*/node_modules/*
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 endif
 
 " use Dracula theme
 color dracula
+
+map \ :NERDTreeToggle<CR>
+map \| :NERDTreeFind<CR>
+let NERDTreeShowHidden = 0
+let NERDTreeRespectWhildIgnore = 1
+let NERDTreeIgnore = ['\.pyc$', '\.swp$']
+
+" Set Escape key timeout
+" https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=10 ttimeoutlen=10
+
+" Always display status line
+set laststatus=2
+
+" set space to leader
+let mapleader = "\<Space>"
