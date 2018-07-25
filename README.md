@@ -3,6 +3,7 @@
 ## Setup
 
 ### vim
+- `brew install the_silver_searcher`
 - `ln -s ~/.vimrc vim/vimrc`
 - `ln -s ~/.vim vim`
 - run `:PlugInstall` within the editor
