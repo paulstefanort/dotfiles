@@ -17,16 +17,20 @@ set softtabstop=2
 set linebreak
 
 call plug#begin('~/.vim/plugged')
+Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dracula/vim', {'as': 'dracula'}
 Plug 't9md/vim-ruby-xmpfilter'
+Plug 'junegunn/goyo.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
+colorscheme dracula
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -85,3 +89,10 @@ let g:xmpfilter_cmd = "seeing_is_believing"
 " autocmd FileType ruby nmap <buffer> <Leader>r <Plug>(seeing_is_believing-run)
 " autocmd FileType ruby xmap <buffer> <Leader>r <Plug>(seeing_is_believing-run)
 " autocmd FileType ruby imap <buffer> <Leader>r <Plug>(seeing_is_believing-run)
+
+" Set markdown formatting
+" au BufRead,BufNewFile *.md setlocal ft=markdown
+au! BufRead,BufNewFile *.markdown set filetype=mkd
+au! BufRead,BufNewFile *.md       set filetype=mkd
+
+let g:vim_markdown_folding_disabled = 1
